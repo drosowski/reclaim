@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/league.css" id="theme">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- section data-background="src/bg2.jpg" -->
+				<section>
+					<h1>Reclaim Your Architecture!</h1>
+					<p>Tools und Techniken um deine Software Architektur zurück zu erobern!</p>
+				</section>
+
+		        <section>
+					<ul>
+						<li class="fragment">Begriffsdefinition</li>
+						<li class="fragment">Die Feinde der Architektur</li>
+						<li class="fragment">Unsere Waffen (aka Tools und Techniken)</li>
+						<li class="fragment">Beispiele und Code</li>
+					</ul>
+				</section>
+
+				<section>					
+					<p>Rational Unified Process, 1999</p>
+					<blockquote cite="http://www.sei.cmu.edu/architecture/start/glossary/classicdefs.cfm">&ldquo;the highest level concept of a system in its environment. The architecture of a software system (at a given point in time) is its <span class="fragment highlight-blue">organization or structure of significant components interacting through interfaces</span>, those components being composed of successively smaller components and interfaces&ldquo;</blockquote>			
+				</section>
+
+				<section>
+					<p>Martin Fowler, 2003</p>
+					<blockquote cite="http://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf">&ldquo;Stuff that's hard to change later&ldquo;</blockquote>
+				</section>
+
+				<section>
+					<section>
+						<h1>Know your enemy!</h1>
+					</section>
+					<section>
+						<p>Technische Schuld</p>
+						<blockquote>&ldquo;doing things the quick and dirty way sets us up with a technical debt, which is similar to a financial debt. Like a financial debt, the technical debt incurs interest payments, which come in the form of the extra effort that we have to do in future development because of the quick and dirty design choice.&ldquo;</blockquote>
+						<p class="fragment">Bewußte Entscheidung!</p>
+					</section>
+					<section>
+						<p class="fragment highlight-blue" data-fragment-index="2">Entropie (phys.)</p>
+						<blockquote>&ldquo;Tendenz in der unbelebten Welt zu immer größerer Unordnung.&ldquo;</blockquote>
+						<p class="fragment" data-fragment-index="1">Unbewußte Entwicklung!</p>
+					</section>					
+				</section>
+
+				<section>
+					<section>
+						<h1>Symptome der Entropie</h1>
+					</section>
+					<section data-transition="fade" data-transition-speed="slow">
+						<h2>Schlecht zu warten</h2>
+						<aside class="notes">Änderungen an einer Stelle im System, ziehen Änderungen an vielen anderen Stellen nach sich.</aside>
+					</section>
+					<section data-transition="fade" data-transition-speed="slow">
+						<h2>Schwer zu erweitern</h2>
+						<aside class="notes">Flexible Architektur sollte Open-Closed sein. Viele Abhängigkeiten entstehen durch fehlende Abstraktion und</aside>
+					</section>
+					<section data-transition="fade" data-transition-speed="slow">
+						<h2>Mangelnde Wiederverwendbarkeit</h2>
+						<aside class="notes">Eine hohe Zahl an Abhängigkeiten zwischen Packages senken die Wahrscheinlichkeit zum Reuse.</aside>
+					</section>
+					<section data-transition="fade" data-transition-speed="slow">
+						<h2>Schwer zu testen</h2>
+						<aside class="notes">Eine hohe Zahl an Abhängigkeiten einer Klasse erschwert die Testbarkeit.</aside>
+					</section>
+					<section data-transition="fade" data-transition-speed="slow">
+						<h2>Zunehmende Unverständlichkeit</h2>
+						<aside class="notes">Eine hohe Zahl an Abhängigkeiten einer Klasse erschwert die Testbarkeit.</aside>
+					</section>					
+				</section>
+
+				<section>
+					<section>
+						<h1>Ursachen</h1>
+					</section>
+				</section>				
+            </div>
+        </div>
+
+        <script src="js/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
+        <script>
+            Reveal.initialize({
+	            	dependencies: [
+					    // Zoom in and out with Alt+click
+				        { src: 'plugin/zoom-js/zoom.js', async: true },
+
+				        // Speaker notes
+				        { src: 'plugin/notes/notes.js', async: true }
+	            	]
+            });
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+			    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			    //if(event.indexh >= 4) {
+			    // 	document.getElementById('theme').setAttribute('href','css/theme/blood.css');
+			    //}
+			    //else {
+			    //	document.getElementById('theme').setAttribute('href','css/theme/league.css');
+			    //}			    
+			} );            
+        </script>
+    </body>
+</html>
