@@ -3,6 +3,15 @@
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/league.css" id="theme">
     </head>
+<script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'pdf.css'; // Notice: I changed the path
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+</script>
     <body>
         <div class="reveal">
             <div class="slides">
@@ -12,7 +21,7 @@
 					<p>Tools und Techniken um deine Software Architektur zurück zu erobern!</p>
 				</section>
 
-		        <section>
+		        <section data-background="src/uhr.jpg">
 					<ul>
 						<li class="fragment">Begriffsdefinition</li>
 						<li class="fragment">Die Feinde der Architektur</li>
@@ -37,7 +46,7 @@
 					</section>
 					<section>
 						<p>Technische Schuld</p>
-						<blockquote>&ldquo;doing things the quick and dirty way sets us up with a technical debt, which is similar to a financial debt. Like a financial debt, the technical debt incurs interest payments, which come in the form of the extra effort that we have to do in future development because of the quick and dirty design choice.&ldquo;</blockquote>
+						<blockquote>&ldquo;doing things the <span class="fragment highlight-blue" data-fragment-index="1">quick and dirty</span> way sets us up with a <span class="fragment highlight-blue" data-fragment-index="1">technical debt</span>, which is similar to a financial debt. Like a financial debt, the technical debt incurs <span class="fragment highlight-blue" data-fragment-index="2">interest payments</span>, which come in the form of the <span class="fragment highlight-blue" data-fragment-index="2">extra effort</span> that we have to do in future development because of the quick and dirty design choice.&ldquo;</blockquote>
 						<p class="fragment">Bewußte Entscheidung!</p>
 					</section>
 					<section>
@@ -57,7 +66,7 @@
 					</section>
 					<section data-transition="fade" data-transition-speed="slow">
 						<h2>Schwer zu erweitern</h2>
-						<aside class="notes">Flexible Architektur sollte Open-Closed sein. Viele Abhängigkeiten entstehen durch fehlende Abstraktion und</aside>
+						<aside class="notes">Flexible Architektur sollte Open-Closed sein. Viele Abhängigkeiten entstehen durch fehlende Abstraktion und durch viele Abhängigkeiten ist ein System schwer zu erweitern.</aside>
 					</section>
 					<section data-transition="fade" data-transition-speed="slow">
 						<h2>Mangelnde Wiederverwendbarkeit</h2>
@@ -65,11 +74,10 @@
 					</section>
 					<section data-transition="fade" data-transition-speed="slow">
 						<h2>Schwer zu testen</h2>
-						<aside class="notes">Eine hohe Zahl an Abhängigkeiten einer Klasse erschwert die Testbarkeit.</aside>
+						<aside class="notes">Fehlende Abstraktion erschwert die Testbarkeit, da es zu komplex wird.</aside>
 					</section>
 					<section data-transition="fade" data-transition-speed="slow">
 						<h2>Zunehmende Unverständlichkeit</h2>
-						<aside class="notes">Eine hohe Zahl an Abhängigkeiten einer Klasse erschwert die Testbarkeit.</aside>
 					</section>					
 				</section>
 
@@ -77,12 +85,96 @@
 					<section>
 						<h1>Ursachen</h1>
 					</section>
-				</section>				
+					<section>
+						<h2>Zirkuläre Abhängigkeiten</h2>
+						<p>Zwischen Klasse, Packages, Modulen etc.</p>
+						<img src="src/circular.png"/>
+					</section>
+					<section>
+						<h2>Fehlende Abstraktion</h2>
+						<p>Klassen, Packages, Module haben sehr viele Abhängigkeiten</p>
+						<img src="src/abstraktion.png"/>
+					</section>
+					<section>
+						<h2>Keine oder mangelhafte Umsetzung von Architekturregeln</h2>
+						<p>Unerlaubte Abhängigkeiten</p>
+						<img src="src/architektur.png"/>
+					</section>
+					<section>
+						<h2>Niedrige Kohäsion, hohe Kopplung</h2>
+						<p>Kohäsion bezeichnet den Zusammenhalt innerhalb einer Komponente, Kopplung die äußere Bindung</p>
+						<img src="src/coupling.jpg"/>
+					</section>					
+					<section>
+						<h2>Code smells</h2>
+						<p>Zyklomatische Komplexität, Duplizierter Code, Große Klassen / Methoden, ...</p>
+						<img src="src/yoda.jpg"/>
+					</section>
+				</section>
+
+				<section data-background="src/gloves.jpg">
+					<h1>Fight back!</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2>Schritt 1: Bestandsaufnahme</h2>
+						<blockquote>&ldquo;If you can't measure it, you can't manage it.&ldquo;</blockquote>
+					</section>
+					<section>
+						<ul>
+							<li>Bestehende Architektur ermitteln</li>
+							<li class="fragment">Dependency Structure Matrix (DSM) Analyse</li>
+							<li class="fragment">Zirkuläre Abhängigkeiten aufdecken</li>
+							<li class="fragment">Metriken sammeln</li>
+						</ul>
+					</section>
+					<section>
+							<img src="src/wtf.png"/>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Schritt 2: Definition der Zielparameter</h2>						
+					</section>
+					<section>
+						<ul>
+							<li>Zielarchitektur bestimmen</li>
+							<li class="fragment">Ziel-Code-Coverage definieren</li>
+							<li class="fragment">Realistische Boundaries für Metriken definieren</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Schritt 3: Zielparameter kontinuierlich überprüfen</h2>
+					</section>
+					<section>
+						<ul>
+							<li>Degraph (oder JDepend)</li>
+							<li class="fragment">Jenkins + SonarQube</li>
+							<li class="fragment">Structure101</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Links und weiterführende Informationen</h2>
+					<ul>
+						<li>http://schauder.github.io/degraph/</li>
+						<li>http://docs.sonarqube.org/display/HOME/Spaghetti+Design</li>
+						<li>http://erik.doernenburg.com/2010/04/dependency-structure-matrix/</li>
+						<li>http://www.ndepend.com/docs/dependency-structure-matrix-dsm</li>
+						<li>http://structure101.com/resources/</li>
+						<li>http://www.martinfowler.com/ieeeSoftware/coupling.pdf</li>
+						<li>Java Application Architecture, Kirk Knoernschild</li>
+					</ul>					
+				</section>
             </div>
         </div>
 
         <script src="js/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
+        <script src="js/head.min.js"></script>
         <script>
             Reveal.initialize({
 	            	dependencies: [
